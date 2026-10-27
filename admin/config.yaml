@@ -1,0 +1,17 @@
+backend:
+  name: github
+  repo: your-username/your-repository-name # আপনার গিটহ্যাব ইউজারনেম এবং রিপোজিটরি নাম এখানে বসাবেন
+
+media_folder: "img/product" # আপলোড করা প্রোডাক্টের ছবি যেখানে সেভ হবে
+public_folder: "/img/product" # ওয়েবসাইটের জন্য ছবির পাথ
+
+collections:
+  - name: "products"
+    label: "Products"
+    folder: "content/products" # প্রোডাক্ট ডেটা ফাইলগুলো যেখানে জমা হবে
+    create: true
+    fields:
+      - {label: "Product Name", name: "title", widget: "string"}
+      - {label: "Price", name: "price", widget: "number"}
+      - {label: "Image", name: "image", widget: "image"}
+      - {label: "Description", name: "description", widget: "text"}

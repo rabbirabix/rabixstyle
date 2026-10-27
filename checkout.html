@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Rabix Style Checkout">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Checkout | Rabix Style</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="css/elegant-icons.css" type="text/css">
+    <link rel="stylesheet" href="css/magnific-popup.css" type="text/css">
+    <link rel="stylesheet" href="css/nice-select.css" type="text/css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+
+    <!-- Professional Modern CSS -->
+    <style>
+        body, h1, h2, h3, h4, h5, h6, p, span, a, input, select, button {
+            font-family: 'Plus Jakarta Sans', sans-serif !important;
+        }
+        body {
+            background-color: #f8fafc;
+        }
+        .fab-card {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 32px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+            border: 1px solid #e2e8f0;
+            margin-bottom: 24px;
+        }
+        .fab-title {
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: #0f172a;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-bottom: 2px solid #f1f5f9;
+            padding-bottom: 14px;
+        }
+        .fab-title i {
+            color: #2563eb;
+            background: #eff6ff;
+            padding: 8px;
+            border-radius: 8px;
+        }
+        .fab-label {
+            font-weight: 700;
+            font-size: 0.88rem;
+            color: #334155;
+            margin-bottom: 8px;
+            display: block;
+        }
+        .fab-input {
+            width: 100%;
+            height: 52px;
+            border: 1.5px solid #cbd5e1;
+            border-radius: 10px;
+            padding: 0 18px;
+            font-size: 0.95rem;
+            transition: all 0.25s ease;
+            background: #fff;
+            color: #0f172a;
+        }
+        .fab-input:focus {
+            border-color: #2563eb;
+            box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+            outline: none;
+        }
+
+        /* Prominent Size Selector Buttons */
+        .size-selector-grid {
+            display: flex;
+            gap: 10px;
+            margin-top: 8px;
+        }
+        .size-box input {
+            display: none;
+        }
+        .size-box label {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 42px;
+            border: 2px solid #cbd5e1;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            color: #334155;
+            background: #f8fafc;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .size-box input:checked + label {
+            border-color: #0f172a;
+            background: #0f172a;
+            color: #fff;
+            box-shadow: 0 4px 12px rgba(15, 23, 42, 0.25);
+        }
+
+        /* Area selection layout */
+        .fab-area-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+        }
+        .fab-area-item input { display: none; }
+        .fab-area-label {
+            display: flex;
+            flex-direction: column;
+            padding: 16px;
+            border: 2px solid #cbd5e1;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            background: #f8fafc;
+        }
+        .fab-area-item input:checked + .fab-area-label {
+            border-color: #2563eb;
+            background: #eff6ff;
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.1);
+        }
+        .ar-title { font-weight: 800; font-size: 0.92rem; color: #0f172a; }
+        .ar-price { font-size: 0.82rem; color: #2563eb; margin-top: 4px; font-weight: 700; }
+
+        /* Payment selection layout */
+        .fab-pay-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-top: 14px;
+        }
+        .fab-pay-item input { display: none; }
+        .fab-pay-label {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 14px;
+            border: 2px solid #cbd5e1;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+            background: #f8fafc;
+            color: #475569;
+        }
+        .fab-pay-item input:checked + .fab-pay-label {
+            border-color: #0f172a;
+            background: #0f172a;
+            color: #fff;
+        }
+        .fab-pay-item input:checked + .fab-pay-label.bkash-btn {
+            border-color: #e2136e;
+            background: #e2136e;
+            color: #fff;
+        }
+
+        /* WhatsApp Action Button */
+        .fab-submit-btn {
+            width: 100%;
+            height: 58px;
+            background: #25d366;
+            color: #fff;
+            border: none;
+            border-radius: 12px;
+            font-weight: 800;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 25px;
+            cursor: pointer;
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.35);
+            transition: all 0.3s ease;
+        }
+        .fab-submit-btn:hover {
+            background: #1eb956;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.45);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Page Preloder -->
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Header Section Begin -->
+    <header class="header">
+        <div class="header__top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-md-7">
+                        <div class="header__top__left">
+                            <p>Inside Faridpur Free Delivery</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-5">
+                        <div class="header__top__right">
+                            <div class="header__top__links">
+                                <a href="#">Sign in</a>
+                                <a href="#">FAQs</a>
+                            </div>
+                            <div class="header__top__hover">
+                                <span>BDT <i class="arrow_carrot-down"></i></span>
+                                <ul>
+                                    <li>BDT</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-3">
+                    <div class="header__logo">
+                        <a href="./index.html"><img src="img/logo.png" alt=""></a>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <nav class="header__menu mobile-menu">
+                        <ul>
+                            <li><a href="./index.html">Home</a></li>
+                            <li><a href="./shop.html">Shop</a></li>
+                            <li><a href="#">Pages</a>
+                                <ul class="dropdown">
+                                    <li><a href="./about.html">About Us</a></li>
+                                    <li><a href="./shop-details.html">Shop Details</a></li>
+                                    <li><a href="./shopping-cart.html">Shopping Cart</a></li>
+                                    <li><a href="./checkout.html">Check Out</a></li>
+                                   </ul>
+                            </li>
+                            <li><a href="./blog.html">Blog</a></li>
+                            <li><a href="./contact.html">Contacts</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="col-lg-3 col-md-3">
+                    <div class="header__nav__option">
+                        <a href="#" class="search-switch"><img src="img/icon/search.png" alt=""></a>
+                        <a href="#"><img src="img/icon/heart.png" alt=""></a>
+                        <a href="#"><img src="img/icon/cart.png" alt=""> <span>0</span></a>
+                        <div class="price">৳0.00</div>
+                    </div>
+                </div>
+            </div>
+            <div class="canvas__open"><i class="fa fa-bars"></i></div>
+        </div>
+    </header>
+    <!-- Header Section End -->
+
+    <!-- Breadcrumb Section Begin -->
+    <section class="breadcrumb-option">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb__text">
+                        <h4>Check Out</h4>
+                        <div class="breadcrumb__links">
+                            <a href="./index.html">Home</a>
+                            <a href="./shop.html">Shop</a>
+                            <span>Check Out</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Breadcrumb Section End -->
+
+    <!-- Checkout Section Begin -->
+    <section class="checkout spad">
+        <div class="container">
+            <div class="checkout__form">
+                <form id="fabCheckoutForm" onsubmit="event.preventDefault(); submitOrder();">
+                    <div class="row">
+                        <!-- Left: Customer Billing Details -->
+                        <div class="col-lg-7">
+                            <div class="fab-card">
+                                <div class="fab-title">
+                                    <i class="fa-solid fa-truck-fast"></i> Delivery Information
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label class="fab-label">Full Name *</label>
+                                    <input type="text" id="c_name" class="fab-input" placeholder="Enter your full name" required>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label class="fab-label">Phone Number *</label>
+                                    <input type="tel" id="c_phone" class="fab-input" placeholder="017xxxxxxxx" required>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label class="fab-label">Delivery Area *</label>
+                                    <div class="fab-area-grid">
+                                        <div class="fab-area-item">
+                                            <input type="radio" name="shipping_area" id="area_faridpur" value="80" checked onchange="calcTotal()">
+                                            <label for="area_faridpur" class="fab-area-label">
+                                                <span class="ar-title">Inside Faridpur</span>
+                                                <span class="ar-price">Charge: ৳80</span>
+                                            </label>
+                                        </div>
+                                        <div class="fab-area-item">
+                                            <input type="radio" name="shipping_area" id="area_outside" value="130" onchange="calcTotal()">
+                                            <label for="area_outside" class="fab-area-label">
+                                                <span class="ar-title">All Bangladesh</span>
+                                                <span class="ar-price">Charge: ৳130</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label class="fab-label">Full Address *</label>
+                                    <input type="text" id="c_address" class="fab-input" placeholder="House no, Road, Area / Thana, District" required>
+                                </div>
+                                <div class="form-group mb-0">
+                                    <label class="fab-label">Order Notes (Optional)</label>
+                                    <input type="text" id="c_notes" class="fab-input" placeholder="Special notes for delivery">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Right: Order Summary & Payment -->
+                        <div class="col-lg-5">
+                            <div class="fab-card" style="position: sticky; top: 20px;">
+                                <div class="fab-title">
+                                    <i class="fa-solid fa-bag-shopping"></i> Order Summary
+                                </div>
+
+                                <div style="display: flex; align-items: flex-start; gap: 15px; padding-bottom: 18px; border-bottom: 1px dashed #cbd5e1; margin-bottom: 18px;">
+                                    <img src="img/product/product-1.jpg" alt="" style="width: 65px; height: 65px; border-radius: 10px; object-fit: cover;">
+                                    <div style="flex-grow: 1;">
+                                        <h6 style="font-weight: 700; font-size: 0.95rem; margin-bottom: 6px; color: #0f172a;">Drop-Shoulder Oversized T-Shirt</h6>
+                                        <div style="font-size: 0.82rem; color: #64748b; font-weight: 600; margin-bottom: 6px;">Select Size:</div>
+                                        <!-- Prominent Size Buttons -->
+                                        <div class="size-selector-grid">
+                                            <div class="size-box">
+                                                <input type="radio" name="product_size" id="size_m" value="M">
+                                                <label for="size_m">M</label>
+                                            </div>
+                                            <div class="size-box">
+                                                <input type="radio" name="product_size" id="size_l" value="L" checked>
+                                                <label for="size_l">L</label>
+                                            </div>
+                                            <div class="size-box">
+                                                <input type="radio" name="product_size" id="size_xl" value="XL">
+                                                <label for="size_xl">XL</label>
+                                            </div>
+                                            <div class="size-box">
+                                                <input type="radio" name="product_size" id="size_xxl" value="XXL">
+                                                <label for="size_xxl">XXL</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div style="font-weight: 800; font-size: 1.05rem; color: #0f172a;">৳<span id="base_price">550</span></div>
+                                </div>
+
+                                <div style="display: flex; justify-content: space-between; font-size: 0.95rem; margin-bottom: 10px; color: #475569; font-weight: 600;">
+                                    <span>Subtotal</span>
+                                    <span>৳<span id="sub_display">550</span></span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between; font-size: 0.95rem; margin-bottom: 10px; color: #475569; font-weight: 600;">
+                                    <span>Delivery Charge</span>
+                                    <span>৳<span id="ship_display">80</span></span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between; font-size: 1.25rem; font-weight: 800; color: #0f172a; border-top: 2px solid #e2e8f0; padding-top: 15px; margin-top: 15px;">
+                                    <span>Grand Total</span>
+                                    <span style="color: #e53637;">৳<span id="total_display">630</span></span>
+                                </div>
+
+                                <div style="margin-top: 22px;">
+                                    <label class="fab-label">Payment Method</label>
+                                    <div class="fab-pay-grid">
+                                        <div class="fab-pay-item">
+                                            <input type="radio" name="pay_method" id="pay_cod" value="COD" checked onchange="toggleBkash()">
+                                            <label for="pay_cod" class="fab-pay-label">
+                                                <i class="fa-solid fa-wallet"></i> Cash on Delivery
+                                            </label>
+                                        </div>
+                                        <div class="fab-pay-item">
+                                            <input type="radio" name="pay_method" id="pay_bkash" value="bKash" onchange="toggleBkash()">
+                                            <label for="pay_bkash" class="fab-pay-label bkash-btn">
+                                                <i class="fa-solid fa-mobile-screen"></i> bKash
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                    <div id="bkash_box" style="display: none; background: #fff1f2; border: 1.5px solid #fecdd3; border-radius: 10px; padding: 16px; margin-top: 16px;">
+                                        <p style="font-size: 0.85rem; color: #be123c; font-weight: 700; margin-bottom: 8px;">
+                                            bKash Personal: <b>01706857829</b> (Please Send Money)
+                                        </p>
+                                        <input type="text" id="c_trxid" class="fab-input" placeholder="Enter TrxID (e.g. 9J7A8K)" style="height: 46px; background: #fff;">
+                                    </div>
+                                </div>
+
+                                <button type="submit" class="fab-submit-btn">
+                                    <i class="fa-brands fa-whatsapp" style="font-size: 1.4rem;"></i> Confirm Order via WhatsApp
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+    <!-- Checkout Section End -->
+
+        <!-- Footer Section Begin -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="footer__about">
+                        <div class="footer__logo">
+                            <a href="#"><img src="img/footer-logo.png" alt=""></a>
+                        </div>
+                        <p>The customer is at the heart of our unique business model, which includes design.</p>
+                        <a href="#"><img src="img/payment.png" alt=""></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 offset-lg-1 col-md-3 col-sm-6">
+                    <div class="footer__widget">
+                        <h6>Shopping</h6>
+                        <ul>
+                            <li><a href="#">Clothing Store</a></li>
+                            <li><a href="#">Trending Shoes</a></li>
+                            <li><a href="#">Accessories</a></li>
+                            <li><a href="#">Sale</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6">
+                    <div class="footer__widget">
+                        <h6>Shopping</h6>
+                        <ul>
+                            <li><a href="#">Contact Us</a></li>
+                            <li><a href="#">Payment Methods</a></li>
+                            <li><a href="#">Delivary</a></li>
+                            <li><a href="#">Return & Exchanges</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 offset-lg-1 col-md-6 col-sm-6">
+                    <div class="footer__widget">
+                        <h6>NewLetter</h6>
+                        <div class="footer__newslatter">
+                            <p>Be the first to know about new arrivals, look books, sales & promos!</p>
+                            <form action="#">
+                                <input type="text" placeholder="Your email">
+                                <button type="submit"><span class="icon_mail_alt"></span></button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="footer__copyright__text">
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        <p>Copyright ©
+                            <script>
+                                document.write(new Date().getFullYear());
+                            </script>2020
+                            All rights reserved | This template is made with <i class="fa fa-heart-o"
+                            aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                        </p>
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer Section End -->
+
+    <!-- Search Begin -->
+    <div class="search-model">
+        <div class="h-100 d-flex align-items-center justify-content-center">
+            <div class="search-close-switch">+</div>
+            <form class="search-model-form">
+                <input type="text" id="search-input" placeholder="Search here.....">
+            </form>
+        </div>
+    </div>
+    <!-- Search End -->
+
+    <!-- Js Plugins -->
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.nice-select.min.js"></script>
+    <script src="js/jquery.nicescroll.min.js"></script>
+    <script src="js/jquery.magnific-popup.min.js"></script>
+    <script src="js/jquery.countdown.min.js"></script>
+    <script src="js/jquery.slicknav.js"></script>
+    <script src="js/mixitup.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>
